@@ -1,0 +1,44 @@
+{
+  "name": "solid-zod-trpc",
+  "scripts": {
+    "dev": "solid-start dev",
+    "build": "solid-start build",
+    "start": "solid-start start",
+    "xata:codegen": "pnpx @xata.io/cli@latest codegen --output='src/lib/xata.codegen.ts'"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/babel__core": "^7.20.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/debug": "^4.1.7",
+    "@types/marked": "^4.3.0",
+    "@types/node": "^18.11.18",
+    "autoprefixer": "^10.4.14",
+    "esbuild": "^0.14.54",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "rollup": "^3.10.0",
+    "solid-start-node": "^0.2.19",
+    "tailwindcss": "^3.3.2",
+    "typescript": "^4.9.4",
+    "vite": "^4.1.4"
+  },
+  "dependencies": {
+    "@solid-primitives/workers": "^0.2.5",
+    "@solidjs/meta": "^0.28.2",
+    "@solidjs/router": "^0.8.2",
+    "@trpc/client": "^10.26.0",
+    "@trpc/server": "^10.26.0",
+    "@xata.io/client": "^0.23.5",
+    "bcrypt": "^5.1.0",
+    "marked": "^5.0.2",
+    "nanoid": "^4.0.2",
+    "solid-js": "^1.7.2",
+    "solid-start": "^0.2.26",
+    "undici": "^5.15.1",
+    "zod": "^3.21.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
