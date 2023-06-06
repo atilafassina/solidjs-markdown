@@ -1,8 +1,6 @@
 import { redirect } from "solid-start/server"
 import { createCookieSessionStorage } from "solid-start/session"
-import { ENV, userLoginSchema, type UserLoginForm } from "./schema"
-import { createUser, getUserByEmail, getUserById } from "./db"
-import bcrypt from "bcrypt"
+import { ENV } from "~/lib/schema"
 
 const storage = createCookieSessionStorage({
   cookie: {
@@ -48,13 +46,11 @@ export async function requireUserId(
 
 export async function endSession(request: Request) {
   const session = await storage.getSession(request.headers.get("Cookie"))
-  const sessionCookie = await storage.destroySession(session)
 
-  return redirect("/", {
-    headers: {
-      "Set-Cookie": sessionCookie,
-    },
-  })
+  console.log("redirecting")
+
+  const destroyedSession = await storage.destroySession(session)
+  return destroyedSession
 }
 
 export async function createUserSession(

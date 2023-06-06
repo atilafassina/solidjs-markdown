@@ -1,9 +1,14 @@
-import { createServerAction$ } from "solid-start/server"
-import { signOut } from "~/lib/db"
+import { createServerAction$, redirect } from "solid-start/server"
+import { signOut } from "~/lib/auth/db"
+import { endSession } from "~/lib/session"
 
 export function Logout() {
-  const [, { Form }] = createServerAction$((_f: FormData, { request }) =>
-    signOut(request)
+  const [, { Form }] = createServerAction$(async (_f: FormData, { request }) =>
+    redirect("/", {
+      headers: {
+        "Set-Cookie": await endSession(request),
+      },
+    })
   )
 
   return (

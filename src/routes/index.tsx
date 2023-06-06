@@ -6,9 +6,9 @@ import {
   createServerData$,
   redirect,
 } from "solid-start/server"
-import { createUser, signIn } from "~/lib/db"
+import { createUser, signIn } from "~/lib/auth/db"
 import { loginFormSchema } from "~/lib/schema"
-import { getUserSession } from "~/lib/session"
+import { getUserSession } from "~/lib/auth/session"
 
 async function loginAction(
   formData: FormData,
@@ -122,14 +122,14 @@ export default function Login() {
           </fieldset>
           <fieldset class="py-10 grid gap-8">
             <legend class="sr-only">User data</legend>
-            <div class="group">
+            <div class="group w-80">
               <label
                 for="username-input"
                 class="block text-neutral-400 group-focus-within:text-white"
               >
                 Username
               </label>
-              <input name="username" placeholder="Solid Snake" />
+              <input class="w-full" name="username" placeholder="Solid Snake" />
             </div>
             <Show when={loggingIn.error?.fieldErrors?.username}>
               <p role="alert">{loggingIn.error.fieldErrors.username}</p>
@@ -141,7 +141,12 @@ export default function Login() {
               >
                 Password
               </label>
-              <input name="password" type="password" placeholder="******" />
+              <input
+                class="w-full"
+                name="password"
+                type="password"
+                placeholder="******"
+              />
             </div>
             <Show when={loggingIn.error?.fieldErrors?.password}>
               <p role="alert">{loggingIn.error.fieldErrors.password}</p>

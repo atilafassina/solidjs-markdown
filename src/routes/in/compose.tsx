@@ -1,7 +1,7 @@
 import { createEffect, createSignal } from "solid-js"
-import MdWorker from "~/lib/md-worker?worker"
 import { countWords, countChars } from "~/lib/stat-helpers"
 import { Logout } from "~/components/logout"
+import MdWorker from "~/lib/md-worker?worker"
 
 export default function Home() {
   let mdw: Worker
@@ -14,13 +14,10 @@ export default function Home() {
       mdw = mdw instanceof Worker ? mdw : new MdWorker()
 
       mdw.postMessage(note())
-
-      const previewContainer = document.getElementById(
-        "preview"
-      ) as HTMLParagraphElement
+      const preview = document.getElementById("preview") as HTMLParagraphElement
 
       mdw.addEventListener("message", function (evt) {
-        previewContainer.innerHTML = evt.data
+        preview.innerHTML = evt.data
       })
     }
   })
@@ -43,7 +40,7 @@ export default function Home() {
           </ul>
         </aside>
 
-        <article class="grid grid-cols-2">
+        <article class="grid grid-rows-2">
           <div class="relative">
             <textarea
               placeholder="I should have eaten that burger..."
@@ -62,15 +59,16 @@ export default function Home() {
             />
           </div>
         </article>
-        <footer class="h-24 grid place-items-center font-mono">
+        <footer class="h-24 grid grid-rows-2 place-items-start font-mono">
           <a
             href="https://atila.io"
             target="_blank"
             rel="noopener"
-            class="text-neutral-700"
+            class="text-neutral-600"
           >
-            atila.io
+            subscribe
           </a>
+          <span class="opacity-40">🔔</span>
         </footer>
       </main>
     </>

@@ -8,16 +8,20 @@ import { redirect } from "solid-start"
 
 const protectedPaths = ["/in"]
 
+function isProtected(route: string) {
+  return protectedPaths.find((path) => route.startsWith(path)) ? true : false
+}
+
 export default createHandler(
   ({ forward }) => {
     return async (event) => {
       const session = await getUserSession(event.request)
       const userId = session.get("userId")
-      const route = new URL(event.request.url).pathname
+      const path = new URL(event.request.url).pathname
 
-      if (protectedPaths.includes(route) && !userId) {
+      if (isProtected(path) && !userId) {
         return redirect("/")
-      } else if (route === "/" && userId) {
+      } else if (path === "/" && userId) {
         return redirect("/in")
       }
 

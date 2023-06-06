@@ -1,8 +1,12 @@
-import { type UserLoginForm, userLoginSchema, fullUserSchema } from "./schema"
-import { getXataClient } from "./xata.codegen"
 import bcrypt from "bcrypt"
-import { createUserSession, endSession } from "./session"
 import { nanoid } from "nanoid"
+import {
+  type UserLoginForm,
+  userLoginSchema,
+  fullUserSchema,
+} from "~/lib/schema"
+import { getXataClient } from "~/lib/xata.codegen"
+import { createUserSession, endSession } from "./session"
 
 const xata = getXataClient()
 
@@ -67,5 +71,6 @@ export const signIn = async (
 }
 
 export const signOut = async (request: Request) => {
+  console.warn("signing out", request)
   return await endSession(request)
 }
