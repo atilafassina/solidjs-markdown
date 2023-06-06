@@ -1,0 +1,17 @@
+{
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "username",
+          "type": "email"
+        },
+        {
+          "name": "password",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

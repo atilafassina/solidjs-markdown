@@ -1,11 +1,11 @@
 import { Show, createSignal } from "solid-js"
 import { useParams } from "solid-start"
-import { FormError } from "solid-start/data"
 import {
   createServerAction$,
   createServerData$,
   redirect,
 } from "solid-start/server"
+import { FormError } from "solid-start/data"
 import { createUser, signIn } from "~/lib/auth/db"
 import { loginFormSchema } from "~/lib/schema"
 import { getUserSession } from "~/lib/auth/session"
@@ -17,9 +17,7 @@ async function loginAction(
   const form = Object.fromEntries(formData.entries())
   const fields = loginFormSchema.safeParse(form)
 
-  if (!fields.success) {
-    return null
-  }
+  if (!fields.success) return null
 
   const { loginType, username, password, redirectTo } = fields.data
 
@@ -33,19 +31,17 @@ async function loginAction(
         })
       }
     }
-
     case "register": {
       try {
         return await createUser({ username, password }, request, redirectTo)
-      } catch (error) {
+      } catch {
         throw new FormError(
-          `Something went wrong trying to create a new user.`,
-          {
-            fields,
-          }
+          `Something went wrong trying to create a new user`,
+          { fields }
         )
       }
     }
+
     default: {
       throw new FormError(`Login type invalid`, { fields })
     }
@@ -57,7 +53,7 @@ export function routeData() {
     const session = await getUserSession(request)
 
     if (Boolean(session.get("userId"))) {
-      throw redirect("/in")
+      return redirect("/in")
     }
 
     return {}

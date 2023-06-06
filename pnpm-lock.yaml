@@ -17,8 +17,8 @@ dependencies:
     specifier: ^10.26.0
     version: 10.26.0
   '@xata.io/client':
-    specifier: ^0.23.5
-    version: 0.23.5(typescript@4.9.5)
+    specifier: ^0.24.2
+    version: 0.24.2(typescript@4.9.5)
   bcrypt:
     specifier: ^5.1.0
     version: 5.1.0
@@ -1631,8 +1631,8 @@ packages:
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
-  /@xata.io/client@0.23.5(typescript@4.9.5):
-    resolution: {integrity: sha512-xNi6eLW6kXi6Ka8Q/TD/4+uGsfAUQ/Mna4CrPZGEQmPHRCqcwuSyaixPcJIaEO0mYfFGFjn5iUyvc4PLQ0rtiw==}
+  /@xata.io/client@0.24.2(typescript@4.9.5):
+    resolution: {integrity: sha512-SrA09QC7hzFxZcW/CumROAsagUzBCeETfsy7145wh7JWdwIpAmKTgtcWiWnrjtm92QvvE6/H6K6HwBhGra7WLw==}
     peerDependencies:
       typescript: '>=4.5'
     dependencies:

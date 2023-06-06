@@ -6,13 +6,9 @@ import {
   fullUserSchema,
 } from "~/lib/schema"
 import { getXataClient } from "~/lib/xata.codegen"
-import { createUserSession, endSession } from "./session"
+import { createUserSession } from "./session"
 
 const xata = getXataClient()
-
-export const getUserByEmail = async (email: string) => {
-  return xata.db.users.filter({ username: email }).getFirst()
-}
 
 export const getUserById = async (id: string) => {
   try {
@@ -20,6 +16,10 @@ export const getUserById = async (id: string) => {
   } catch {
     return null
   }
+}
+
+export const getUserByEmail = async (email: string) => {
+  return xata.db.users.filter({ username: email }).getFirst()
 }
 
 export const createUser = async (
@@ -35,7 +35,7 @@ export const createUser = async (
 
   const userExists = await getUserByEmail(user.username)
 
-  if (userExists) {
+  if (Boolean(userExists)) {
     throw new Error(`User with username ${user.username} already exists`)
   }
 
@@ -68,9 +68,4 @@ export const signIn = async (
   if (!isCorrectPassword) return null
 
   return createUserSession(user.data.id, redirectTo, request)
-}
-
-export const signOut = async (request: Request) => {
-  console.warn("signing out", request)
-  return await endSession(request)
 }

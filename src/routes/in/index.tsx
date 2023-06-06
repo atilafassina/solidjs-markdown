@@ -4,6 +4,7 @@ import { getUserById } from "~/lib/auth/db"
 import { userLoginSchema } from "~/lib/schema"
 import { getUserSession } from "~/lib/auth/session"
 import { z } from "zod"
+import { Logout } from "~/components/logout"
 
 type RouteData = z.infer<typeof userLoginSchema>["username"]
 
@@ -23,16 +24,12 @@ export function routeData() {
   })
 }
 
-export default function Home() {
+export default function In() {
   const username = useRouteData<RouteData>()
 
   return (
     <main class="w-full p-4">
-      <form class="fixed right-5">
-        <button name="logout" type="submit" class="text-xs hover:underline">
-          Logout
-        </button>
-      </form>
+      <Logout />
       <article>
         <h2 class="text-2xl pb-5 text-neutral-400">
           Welcome to your dashboard {username}

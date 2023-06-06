@@ -1,9 +1,9 @@
 import { createEffect, createSignal } from "solid-js"
-import { countWords, countChars } from "~/lib/stat-helpers"
+import { countWords, countChars } from "~/lib/markdown/stat-helpers"
 import { Logout } from "~/components/logout"
-import MdWorker from "~/lib/md-worker?worker"
+import MdWorker from "~/lib/markdown/md-worker?worker"
 
-export default function Home() {
+export default function Composer() {
   let mdw: Worker
   const [note, setNote] = createSignal("")
   const charCount = () => countChars(note())

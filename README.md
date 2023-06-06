@@ -1,30 +1,28 @@
-# SolidStart
+# Markdown Note Taker
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+> 🚧 **WiP**: this code is part of a series of videos on SolidStart.
 
-## Creating a project
+[![Cover for "Absolute speed: SolidJS + Web-Workers"](https://i.ytimg.com/vi/Ll2zt2m5Z5A/mqdefault.jpg)](https://youtube.com/watch?v=Ll2zt2m5Z5A)
+Absolute speed: SolidJS + Web-Workers.
 
-```bash
-# create a new project in the current directory
-npm init solid@latest
+## Setup
 
-# create a new project in my-app
-npm init solid@latest my-app
+To have auth working, you will need a [Xata](https://xata.io) account and initialize a database:
+
+```
+pnpx @xata.io/cli@latest init schema=schema-template.json
 ```
 
-## Developing
+This will create a database at Xata with the schema in the `json`, it will also add the `XATA_API_KEY` to your `.env` and create a `.xatarc` with your database url.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Ready to go
 
-```bash
-npm run dev
+Now it's a matter of installing rest of dependencies and running the dev server.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+pnpm i && pnpm dev
 ```
 
-## Building
+## Deploy?
 
-Solid apps are built with _adapters_, which optimise your project for deployment to different environments.
-
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different adapter, add it to the `devDependencies` in `package.json` and specify in your `vite.config.js`.
+Soon. There is some refactoring happening at SolidStart right now which will affect the adapters, so let's wait.

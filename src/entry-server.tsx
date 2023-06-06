@@ -3,13 +3,13 @@ import {
   createHandler,
   renderAsync,
 } from "solid-start/entry-server"
-import { getUserSession } from "./lib/session"
+import { getUserSession } from "./lib/auth/session"
 import { redirect } from "solid-start"
 
 const protectedPaths = ["/in"]
 
 function isProtected(route: string) {
-  return protectedPaths.find((path) => route.startsWith(path)) ? true : false
+  return protectedPaths.find((path) => (route.startsWith(path) ? true : false))
 }
 
 export default createHandler(
@@ -28,5 +28,6 @@ export default createHandler(
       return forward(event)
     }
   },
+
   renderAsync((event) => <StartServer event={event} />)
 )
