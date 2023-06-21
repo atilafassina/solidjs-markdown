@@ -32,7 +32,8 @@ export default function In() {
       <Logout />
       <article>
         <h2 class="text-2xl pb-5 text-neutral-400">
-          Welcome to your dashboard {username}
+          Welcome to your dashboard{" "}
+          <span class="bg-neutral-200 text-black px-1">{username}</span>
         </h2>
         <a href="/in/compose" class="hover:underline focus:underline">
           Compose a new note.
