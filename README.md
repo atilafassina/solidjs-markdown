@@ -2,8 +2,11 @@
 
 > 🚧 **WiP**: this code is part of a series of videos on SolidStart.
 
-[![Cover for "Absolute speed: SolidJS + Web-Workers"](https://i.ytimg.com/vi/Ll2zt2m5Z5A/mqdefault.jpg)](https://youtube.com/watch?v=Ll2zt2m5Z5A)
-Absolute speed: SolidJS + Web-Workers.
+| Cover | Title |
+| --- | --- | 
+| [![Cover for "Server Actions powered Auth in Solid-Start with Xata and Zod"](https://i.ytimg.com/vi/Ll2zt2m5Z5A/mqdefault.jpg)](https://www.youtube.com/watch?v=v5Usqqax4xE) |  Server Actions powered Auth in Solid-Start with Xata and Zod. |
+| [![Cover for "Server Actions with SolidStart"](https://i.ytimg.com/vi/ueNUEJ4vxFQ/mqdefault.jpg)](https://www.youtube.com/watch?v=ueNUEJ4vxFQ) |  Server Actions with SolidStart. |
+| [![Cover for "Absolute speed: SolidJS + Web-Workers"](https://i.ytimg.com/vi/Ll2zt2m5Z5A/mqdefault.jpg)](https://youtube.com/watch?v=Ll2zt2m5Z5A) |  Absolute speed: SolidJS + Web-Workers. |
 
 ## Setup
 
