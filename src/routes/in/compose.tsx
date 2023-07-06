@@ -11,14 +11,16 @@ export default function Composer() {
 
   createEffect(async () => {
     if (window.Worker) {
-      mdw = mdw instanceof Worker ? mdw : new MdWorker()
+      if (!(mdw instanceof Worker)) {
+        mdw = new MdWorker()
+
+        mdw.addEventListener("message", function (evt) {
+          preview.innerHTML = evt.data
+        })
+      }
 
       mdw.postMessage(note())
       const preview = document.getElementById("preview") as HTMLParagraphElement
-
-      mdw.addEventListener("message", function (evt) {
-        preview.innerHTML = evt.data
-      })
     }
   })
 
